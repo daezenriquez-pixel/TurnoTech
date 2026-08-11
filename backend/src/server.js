@@ -24,7 +24,8 @@ app.use(express.static(path.resolve(__dirname, '..', 'frontend', 'dist')));
 
 // Redirigir cualquier otra ruta al index.html del frontend (IMPORTANTE: dejar después de tus rutas /api)
 // CÓDIGO CORREGIDO
-app.get('(.*)', (req, res) => {
+// Asegúrate de cambiar el (.*) por esto exactamente:
+app.get('/:any*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'frontend', 'dist', 'index.html'));
 });
 
