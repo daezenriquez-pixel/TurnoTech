@@ -23,9 +23,11 @@ const path = require('path');
 app.use(express.static(path.resolve(__dirname, '..', 'frontend', 'dist')));
 
 // Redirigir cualquier otra ruta al index.html del frontend (IMPORTANTE: dejar después de tus rutas /api)
-app.get('*', (req, res) => {
+// CÓDIGO CORREGIDO
+app.get('(.*)', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'frontend', 'dist', 'index.html'));
 });
+
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
